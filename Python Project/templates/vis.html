@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="st.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="workspage.html">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="home" class="cont">
+        <ul>
+            <li>
+                <a href="{{url_for('home')}}"> 01 : Home | </a>
+            </li>
+            <li>
+                <a href="{{url_for('calc_GC')}}"> 02 : GC Caculation | </a>
+            </li>
+            <li>
+                <a href="{{url_for('Visualization2')}}"> 03 : Visualization | </a>
+            </li>
+        </ul>
+
+        <div class="navbar">
+            <h1 style="float: left; font-family:Khula; padding-top: 14px;
+           font-size:4em; margin-left:3cm; margin-top: .1cm;
+             color:rgb(255, 255, 255)">
+                GC Content Visualization
+            </h1>
+
+            <h3>
+                <form action="/display" target="_self">
+                    <input type="submit" value="Display Image" />
+                </form>
+            </h3>
+
+
+            <div class='console-container' style=" margin-left: 1cm; "><span id='text'>
+                </span>
+                <div class='console-underscore' id='console'>&#95;</div>
+
+            </div>
+        </div>
+        <br>
+        <img src="{{img66}}" alt="img" width="500" height="400" style="margin-left:3cm ;">
+        </div>
+        
+    </div>
+    <style>
+        li {
+            display: inline-flex;
+            padding: 20px;
+            font-family: 'Shippori Mincho B1', serif;
+            font-weight: lighter;
+            font-size: 20px;
+
+        }
+
+        .cont {
+            background-image: url(/static/Images/1.png);
+            width: 100%;
+            height: 750px;
+            background-repeat: no-repeat;
+        }
+
+        a {
+            font-family: 'Shippori Mincho B1', serif;
+            font-weight: lighter;
+            color: rgba(255, 255, 255, 0.603);
+        }
+
+        a:hover {
+            color: rgba(255, 255, 255, 0.603);
+        }
+
+        body {
+            height: 40vh;
+            background-color: black;
+        }
+
+        @media (min-width: 768px) {
+            .card img {
+                height: 11em;
+            }
+
+
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('#retrieve').click(function () {
+                $.ajax({
+                    url: "{{ url_for ('vis') }}",
+                    type: "GET",
+                    success: function (response) {
+                        $("#1").attr('src', '/static/' + response);
+                    },
+                    error: function (xhr) {
+                        //Do Something to handle error
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/myScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+</body>
+
+</html>
